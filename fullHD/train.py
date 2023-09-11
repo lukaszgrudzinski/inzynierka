@@ -65,25 +65,25 @@ def compare(before,withHole,after,start):
 #			makeAHole(array,x,y+1)
 #	return array
 #def makeholes(array):
-#	for i in range(array.shape[0]):                    		        #robienie dziur 
+#	for i in range(array.shape[0]):                    		       
 #			if randint(0,2)==0:
 #				continue
-#			x=randint(100,1820)                                         #robienie dziur 
-#			y=randint(100,980)                                          #robienie dziur 
+#			x=randint(100,1820)                                         
+#			y=randint(100,980)                                          
 #			for a in range(10000):
 #				 
 #	return array
 def makeoldholes(array):
-	for i in range(array.shape[0]):                    		        #robienie dziur 
+	for i in range(array.shape[0]):                    		        
 			if randint(0,5)==0:
 				continue
-			x=randint(100,1820)                                         #robienie dziur 
+			x=randint(100,1820)                                         
 			y=randint(100,980) 
-			r=randint(70,100)                                          #robienie dziur 
-			for j in range(1920):                                     #robienie dziur 
-				for k in range(1920):                                 #robienie dziur 
-					if j>x-r and j<x+r and k>y-r and k<y+r:         #robienie dziur 
-						array[i,k,j,0]=-1                 			#robienie dziur 
+			r=randint(70,100)                                          
+			for j in range(1920):                                     
+				for k in range(1920):                                 
+					if j>x-r and j<x+r and k>y-r and k<y+r:         
+						array[i,k,j,0]=-1
 						array[i,k,j,1]=-1 
 						array[i,k,j,2]=-1 
 	return array
@@ -159,12 +159,8 @@ x=Conv3D(1,[3,3,1],activation='relu', padding='same')(x)
 x = UpSampling3D((2, 2,1))(x)
 x=Conv3D(1,[3,3,1],activation='relu', padding='same')(x)
 
-
 x=keras.layers.ZeroPadding3D(padding=(12, 0,0), data_format=None)(x)
 decoded=Reshape([1080,1920,3])(x)
-
-
-
 
 autoencoder = Model(input_img, decoded)
 autoencoder.compile( loss='mse',optimizer=tf.train.AdamOptimizer(),metrics=['accuracy']) 

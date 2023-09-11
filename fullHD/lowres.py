@@ -70,8 +70,6 @@ withHoles=makeoldholes(withHoles)
 withHoles2=imageholes(np.copy(full_images))
 #compare(full_images,withHoles,withHoles2,0)
 
-
-
 from keras.layers import Input, Dense, Conv3D,Conv2D, MaxPooling3D,MaxPooling2D, UpSampling2D,UpSampling3D, Flatten,Reshape,Permute, AveragePooling1D
 from keras.models import Model
 from keras import backend as K
@@ -109,8 +107,6 @@ x = Permute((4,3,2,1))(x)
 x = MaxPooling3D(pool_size=(128,1,1),strides=None,padding='valid')(x)
 x = Permute((4,3,2,1))(x)
 
-
-
 size_coded=16*30*3
 densik= Flatten()(x)
 densik = Dense(int(size_coded*1.2), activation=tf.tanh,use_bias=True)(densik)
@@ -142,12 +138,7 @@ x=Conv3D(1,[3,3,1],activation='relu', padding='same')(x)
 x = UpSampling3D((2, 2,1))(x)
 x=Conv3D(1,[3,3,1],activation='relu', padding='same')(x)
 
-
-
 decoded=Reshape([1080,1920,3])(x)
-
-
-
 
 autoencoder = Model(input_img, decoded)
 autoencoder.compile( loss='mse',optimizer=tf.train.AdamOptimizer(),metrics=['accuracy']) 

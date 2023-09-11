@@ -46,23 +46,23 @@ def makeAHole(array,x,y):
 			makeAHole(array,x,y+1)
 	return array
 def makeholes(array):
-	for i in range(array.shape[0]):                    		        #robienie dziur 
+	for i in range(array.shape[0]):                    		        
 			if randint(0,2)==0:
 				continue
-			x=randint(100,1820)                                         #robienie dziur 
-			y=randint(100,980)                                          #robienie dziur 
-			array[i]=makeAHole(array[i],y,x)               			#robienie dziur 
+			x=randint(100,1820)                                         
+			y=randint(100,980)                                          
+			array[i]=makeAHole(array[i],y,x)               			
 	return array
 def makeoldholes(array):
-	for i in range(array.shape[0]):                    		        #robienie dziur 
+	for i in range(array.shape[0]):                    		        
 			if randint(0,5)==0:
 				continue
-			x=randint(100,980)                                         #robienie dziur 
-			r=randint(70,100)                                          #robienie dziur 
-			for j in range(1080):                                     #robienie dziur 
-				for k in range(1920):                                 #robienie dziur 
-					if j>x-r and j<x+r and k>x-r and k<x+r:         #robienie dziur 
-						array[i,j,k,0]=-1                 			#robienie dziur 
+			x=randint(100,980)                                         
+			r=randint(70,100)                                          
+			for j in range(1080):                                     
+				for k in range(1920):                                  
+					if j>x-r and j<x+r and k>x-r and k<x+r:         
+						array[i,j,k,0]=-1                 			
 						array[i,j,k,1]=-1 
 						array[i,j,k,2]=-1 
 	return array
